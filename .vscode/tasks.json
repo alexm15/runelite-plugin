@@ -16,6 +16,14 @@
 			"windows": { "command": ".\\gradlew.bat run" },
 			"isBackground": true,
 			"problemMatcher": []
+		},
+		{
+			"label": "check",
+			"type": "shell",
+			"command": "./scripts/check.sh",
+			"windows": { "command": "powershell -ExecutionPolicy Bypass -File .\\scripts\\check.ps1" },
+			"group": "test",
+			"problemMatcher": []
 		}
 	]
 }

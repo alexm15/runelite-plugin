@@ -77,6 +77,33 @@ java -version            # expect 11.x Temurin
 The `run` task starts `StarterPluginTest.main`, which loads the plugin as a built-in and starts
 RuneLite with `--developer-mode --debug` and the JVM flag `-ea`.
 
+### Checks before committing
+
+`scripts/check.ps1` (Windows) and `scripts/check.sh` (Linux, macOS, cloud) do the same two things:
+
+- Run `scripts/Check.java`. These are static checks for the Plugin Hub requirements and for the
+  rules below that can be found by reading files:
+  - `runelite-plugin.properties` keys and values;
+  - template leftovers and build artifacts;
+  - icon and PNG limits;
+  - forbidden APIs (reflection, subprocesses, `new Gson()`, `Thread.sleep`, raw widget IDs and so on).
+- Run `gradlew build`.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\check.ps1            # static checks + build
+powershell -ExecutionPolicy Bypass -File .\scripts\check.ps1 -NoBuild   # static checks only
+powershell -ExecutionPolicy Bypass -File .\scripts\check.ps1 -Submit    # placeholder names become errors
+```
+
+It is also the VS Code task **check**.
+
+- **Errors** fail the run.
+- **Warnings** are things a reviewer will look at closely (file access, menus, chat parsing,
+  scene scanning). Read each one.
+- A clean run is not proof the plugin is allowed; it only means no known red flag was found.
+
+**Claude:** run `scripts/check.sh` before every commit, and `--submit` before a Plugin Hub PR.
+
 ### VS Code
 
 - **Run and Debug** (Ctrl+Shift+D), then pick **"RuneLite (developer mode)"** from
