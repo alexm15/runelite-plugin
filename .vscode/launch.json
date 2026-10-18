@@ -1,0 +1,15 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "java",
+			"name": "RuneLite (developer mode)",
+			"request": "launch",
+			"projectName": "runelite-plugin",
+			"mainClass": "com.alexm15.starter.StarterPluginTest",
+			"vmArgs": "-ea",
+			"args": "--developer-mode --debug",
+			"console": "integratedTerminal"
+		}
+	]
+}

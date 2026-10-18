@@ -8,3 +8,14 @@ nbactions.xml
 nb-configuration.xml
 nbproject/
 *.class
+# VS Code / Eclipse JDT language server output
+bin/
+.factorypath
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/settings.json
+
+# Never commit RuneLite credentials (see CLAUDE.md, Jagex account login)
+credentials.properties

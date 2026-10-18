@@ -1,12 +1,14 @@
-package com.example;
+package com.alexm15.starter;
 
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
-@ConfigGroup("example")
-public interface ExampleConfig extends Config
+@ConfigGroup(StarterConfig.GROUP)
+public interface StarterConfig extends Config
 {
+	String GROUP = "alexm15starter";
+
 	@ConfigItem(
 		keyName = "greeting",
 		name = "Welcome Greeting",
